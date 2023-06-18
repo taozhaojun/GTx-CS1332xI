@@ -149,6 +149,26 @@ public class BST<T extends Comparable<? super T>> {
         }
         return findSuccessor(node.getLeft());
     }
+
+    public boolean contains(T data) {
+        // WRITE YOUR CODE HERE (DO NOT MODIFY METHOD HEADER)!
+        return containsHelper(root, data);
+        
+    }
+    
+    private boolean containsHelper(BSTNode<T> node, T data) {
+        if (node == null) {
+            return false;
+        }
+        int compare = data.compareTo(node.getData());
+        if (compare < 0) {
+            return containsHelper(node.getLeft(), data);
+        } else if (compare > 0) {
+            return containsHelper(node.getRight(), data);
+        } else {
+            return true;
+        }
+    }
     
     
 }
